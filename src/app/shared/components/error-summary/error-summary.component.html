@@ -1,0 +1,10 @@
+@if (errors.length > 0) {
+    <div class="error-summary">
+        <h3>{{ title }}</h3>
+        <ul>
+            @for (error of errors; track error) {
+                <li>{{ error }}</li>
+            }
+        </ul>
+    </div>
+}

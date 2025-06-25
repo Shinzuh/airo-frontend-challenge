@@ -1,0 +1,30 @@
+<div class="form-group">
+    @if (label) {
+        <label [for]="id" [class.required]="required">{{ label }}</label>
+    }
+
+    <input
+            [id]="id"
+            [name]="id"
+            [type]="type"
+            class="form-control"
+            [autocomplete]="autoComplete"
+            [class.error]="!!errorMsg"
+            [value]="value"
+            (input)="onInputChange($event)"
+            (blur)="onTouched()"
+            [disabled]="isDisabled"
+    />
+
+    @if (helpText) {
+        <small class="help-text">
+            {{ helpText }}
+        </small>
+    }
+
+    @if (errorMsg && !typingState) {
+        <span class="error-message">
+      {{ errorMsg }}
+    </span>
+    }
+</div>

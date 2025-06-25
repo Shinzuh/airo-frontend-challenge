@@ -1,0 +1,231 @@
+.results-card {
+    max-width: 800px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.section {
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.section-title {
+    color: #555;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0e0e0;
+
+    @media (max-width: 768px) {
+        font-size: 1.1rem;
+    }
+}
+
+.data-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
+
+.data-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    flex: 1;
+    width: fit-content;
+    height: fit-content;
+
+    .wrapper-password {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    &.password-item {
+        @media (max-width: 768px) {
+            flex-wrap: wrap;
+
+            .data-value {
+                flex: 1;
+            }
+        }
+    }
+}
+
+.data-label {
+    font-weight: 500;
+    color: #666;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        text-align: left;
+        min-width: 100px;
+    }
+}
+
+.data-value {
+    color: #333;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.subscription-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.875rem;
+
+    &[data-type="Basic"] {
+        background-color: #e3f2fd;
+        color: #1976d2;
+    }
+
+    &[data-type="Advanced"] {
+        background-color: #f3e5f5;
+        color: #7b1fa2;
+    }
+
+    &[data-type="Pro"] {
+        background-color: #fff3e0;
+        color: #f57c00;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+    }
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 1rem;
+    -webkit-overflow-scrolling: touch;
+
+    @media (max-width: 768px) {
+        margin: 0 -1rem;
+        padding: 0 1rem;
+    }
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    min-width: 500px;
+
+    th, td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+        background-color: #f5f5f5;
+        font-weight: 600;
+        color: #555;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 0.875rem;
+
+        th, td {
+            padding: 0.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        font-size: 0.75rem;
+
+        th, td {
+            padding: 0.4rem;
+        }
+    }
+}
+
+.actions {
+    margin-top: 2rem;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        margin-top: 1.5rem;
+    }
+}
+
+.password-toggle {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    color: #666;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        color: #333;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    &:focus {
+        outline: 2px solid #4a90e2;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+
+    svg {
+        transition: transform 0.2s ease;
+        width: 20px;
+        height: 20px;
+    }
+
+    &:hover svg {
+        transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+        padding: 0.5rem;
+        margin-left: 0.25rem;
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}

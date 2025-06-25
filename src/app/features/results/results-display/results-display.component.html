@@ -1,0 +1,70 @@
+<div class="page-container">
+    @if (formData) {
+        <div class="card results-card">
+            <div class="section">
+                <h2 class="section-title">Form Data</h2>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <span class="data-label">First Name</span>
+                        <span class="data-value">{{ formData.firstName }}</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Last Name</span>
+                        <span class="data-value">{{ formData.lastName }}</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Email</span>
+                        <span class="data-value">{{ formData.email }}</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Subscription</span>
+                        <span class="data-value subscription-badge" [attr.data-type]="formData.subscription">
+                            {{ formData.subscription }}
+                        </span>
+                    </div>
+                    <div class="data-item password-item">
+                        <span class="data-label">Password</span>
+                        <div class="wrapper-password">
+                            <span class="data-value">{{ showPassword ? formData.password : maskPassword(formData.password) }}</span>
+                            <button
+                                    class="password-toggle"
+                                    (click)="togglePassword()"
+                                    type="button"
+                                    [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+                                <lucide-angular [img]="passwordIcon" size="20"></lucide-angular>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">CSV Data</h2>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                        <tr>
+                            @for (col of displayedColumns; track col) {
+                                <th>{{ col }}</th>
+                            }
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @for (row of formData.csvData; track row) {
+                                <tr>
+                                    @for (col of displayedColumns; track col) {
+                                        <td>{{ row[col] }}</td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary" (click)="goBack()">Back to Form</button>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,109 @@
+<div class="page-container">
+    <div class="card form-card">
+        <app-error-summary
+                [errors]="showValidationErrors ? getAllErrors() : []"
+                [title]="'Please fix the following errors:'"
+        ></app-error-summary>
+
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <app-input-text
+                        label="First Name"
+                        [required]="true"
+                        id="firstName"
+                        type="text"
+                        autoComplete="name"
+                        formControlName="firstName"
+                        [errorMsg]="formErrors.firstName"
+                        autofocus
+                        appStopTypingDetector
+                        (stopTyping)="onStopTyping('firstName')"
+                        (input)="onStartTyping('firstName')"
+                ></app-input-text>
+
+                <app-input-text
+                        label="Last Name"
+                        [required]="true"
+                        id="lastName"
+                        type="text"
+                        autoComplete="family-name"
+                        formControlName="lastName"
+                        [errorMsg]="formErrors.lastName"
+                        appStopTypingDetector
+                        (stopTyping)="onStopTyping('lastName')"
+                        (input)="onStartTyping('lastName')"
+                ></app-input-text>
+            </div>
+
+            <app-input-text
+                    label="Email Address"
+                    [required]="true"
+                    id="email"
+                    type="text"
+                    autoComplete="email"
+                    formControlName="email"
+                    [errorMsg]="formErrors.email"
+                    appStopTypingDetector
+                    (stopTyping)="onStopTyping('email')"
+                    (input)="onStartTyping('email')"
+            ></app-input-text>
+
+            <div class="form-group">
+                <label for="subscription" class="required">Subscription Type</label>
+                <select
+                        id="subscription"
+                        formControlName="subscription"
+                        class="form-control subscription-choice"
+                >
+
+                    @for (type of subscriptionTypes; track type) {
+                        <option [value]="type">
+                            {{ type }}
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <app-input-text
+                    label="Password"
+                    [required]="true"
+                    id="password"
+                    type="password"
+                    formControlName="password"
+                    helpText="Must be at least 8 characters with one letter and one special character"
+                    [errorMsg]="formErrors.password"
+                    appStopTypingDetector
+                    (stopTyping)="onStopTyping('password')"
+                    (input)="onStartTyping('password')"
+            ></app-input-text>
+
+            <div class="form-group">
+                <label for="csvFileInput" class="required">CSV File</label>
+                <div class="file-upload-wrapper">
+                    <input
+                            id="csvFileInput"
+                            #csvFileInput
+                            type="file"
+                            accept=".csv"
+                            (change)="onFileSelected($event)"
+                            class="file-input"
+                    />
+
+                    <label for="csvFileInput" class="file-label">
+                        <span class="file-icon">📁</span>
+                        {{ csvFileName || 'Choose CSV file' }}
+                    </label>
+                </div>
+
+                @if (formErrors.csvFile) {
+                    <span class="error-message">{{ formErrors.csvFile }}</span>
+                }
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" (click)="onClear()">Clear</button>
+            </div>
+        </form>
+    </div>
+</div>
